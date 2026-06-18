@@ -31,7 +31,7 @@ class BillLspSuite extends BaseLspSuite("bill") {
       _ = assertNoDiff(
         client.workspaceDiagnostics,
         """
-          |src/com/App.scala:2:16: error: type mismatch;
+          |src/com/Ap.scala:2:16: error: type mismatch;
           | found   : String("")
           | required: Int
           |  val x: Int = ""
