@@ -22,7 +22,7 @@ class FallbackDownloadSuite extends BaseSuite {
       Embedded.fallbackDownload(dependency, useJarBasedCoursier = true)
     println(results)
     assert(
-      results.exists(_.toString.contains("mtags_2.12.18-1.4.0.jar")),
+      results.exists(_.toString.contains("mtags_2.12.18-14.0.jar")),
       "Fallback should download mtags using local coursier",
     )
     assertEquals(results.size, 37)

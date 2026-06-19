@@ -24,7 +24,7 @@ class MbtImplementationSuite
            |package a;
            |public abstract class Animal {
            |  public abstract String makeSound();
-           |  public class Dog extends Animal {
+           |  public class Dg extends Animal {
            |    @Override public String makeSound() { return "Woof"; }
            |  }
            |}

@@ -46,7 +46,7 @@ message User { }
 README.md
 src/main/java/com/Greeting.java
 src/main/proto/com/User.proto
-src/main/scala/com/Hello.scala
+src/main/scala/com/Hello.scal
 """
     assertLsFiles(initialFiles)
 
