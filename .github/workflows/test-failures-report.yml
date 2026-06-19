@@ -28,7 +28,7 @@ jobs:
           name: Aggregated failure reports
           path: "**/target/test-reports/*.xml"
           reporter: java-junit
-          list-suites: failed
-          list-tests: failed
-          list-files: failed
+          list-suites: none
+          list-tests: none
+          list-files: none
           use-actions-summary: 'true'
