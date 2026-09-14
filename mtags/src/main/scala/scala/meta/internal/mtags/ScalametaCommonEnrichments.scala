@@ -377,6 +377,16 @@ trait ScalametaCommonEnrichments extends CommonMtagsEnrichments {
     def root: Option[AbsolutePath] =
       Option(path.toNIO.getRoot()).map(AbsolutePath(_))
 
+    /**
+     * Simple names of this path's ancestors, from the filesystem root
+     * through to the path itself.
+     */
+    def ancestorNames: List[String] = {
+      val nio = path.toNIO
+      Option(nio.getRoot()).map(_.toString).toList ++
+        List.tabulate(nio.getNameCount)(i => nio.getName(i).toString)
+    }
+
     def list: Generator[AbsolutePath] = {
       if (path.isDirectory) Files.list(path.toNIO).asScala.map(AbsolutePath(_))
       else Generator()

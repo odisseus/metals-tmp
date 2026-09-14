@@ -1,8 +1,11 @@
 package tests
 
+import java.nio.file.Paths
+
 import scala.meta.inputs.Input
 import scala.meta.internal.mtags.MtagsEnrichments._
 import scala.meta.internal.{semanticdb => s}
+import scala.meta.io.AbsolutePath
 
 import org.eclipse.{lsp4j => l}
 
@@ -112,6 +115,17 @@ class MtagsEnrichmentsSuite extends BaseSuite {
       "jar:file:///C:/Users/A C/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.2.0/scala3-library_3-3.2.0-sources.jar!/scala/Tuple.scala",
       "Tuple.scala",
     )
+  }
+
+  test("ancestor-names") {
+    val path = AbsolutePath(Paths.get("foo", "bar", "baz").toAbsolutePath)
+    val names = path.ancestorNames
+    assertEquals(names.takeRight(3), List("foo", "bar", "baz"))
+    assertEquals(names.head, path.toNIO.getRoot.toString)
+    assertEquals(names.last, path.filename)
+
+    val root = AbsolutePath(path.toNIO.getRoot)
+    assertEquals(root.ancestorNames, List(path.toNIO.getRoot.toString))
   }
 
 }
